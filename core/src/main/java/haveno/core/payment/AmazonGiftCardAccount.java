@@ -30,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public final class AmazonGiftCardAccount extends PaymentAccount {
+public final class AmazonGiftCardAccount extends CountryBasedPaymentAccount {
 
     public static final List<TradeCurrency> SUPPORTED_CURRENCIES = List.of(
             new TraditionalCurrency("AUD"),
@@ -59,6 +59,11 @@ public final class AmazonGiftCardAccount extends PaymentAccount {
 
     public AmazonGiftCardAccount() {
         super(PaymentMethod.AMAZON_GIFT_CARD);
+    }
+
+    @Override
+    public List<Country> getSupportedCountries() {
+        return CountryUtil.getAllAmazonGiftCardCountries();
     }
 
     @Override
